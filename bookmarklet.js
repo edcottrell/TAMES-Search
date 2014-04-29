@@ -24,7 +24,8 @@ javascript:
  * THE SOFTWARE.
  */
  
-var url = "http://www.search.txcourts.gov/CaseSearch.aspx?coa=cossup", /* Initialize the URL to use if we cannot do a search */
+var domain = "http://www.search.txcourts.gov/", /* Domain for the searches */
+	path = "CaseSearch.aspx?coa=cossup", /* Initialize the URL to use if we cannot do a search */
 	gs = window.getSelection(); /* Get the selection */
  
 /* See if the user has actually selected anything */
@@ -49,9 +50,9 @@ if(gs.type != "None") {
 		
 		/* If the case number is non-empty, get the URL for the search page. */
 		if(caseNo != "") {
-			var url = "http://www.search.txcourts.gov/Case.aspx?cn="+caseNo;
+			var path = "Case.aspx?cn="+caseNo;
 		}
 	}
 }
 /* Open the search window */
-window.open(url);
+window.open(domain+path);
