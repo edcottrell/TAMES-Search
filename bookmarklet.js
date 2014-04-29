@@ -23,33 +23,33 @@ javascript:
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
-var url = 'http://www.search.txcourts.gov/CaseSearch.aspx?coa=cossup', /* Initialize the URL to use if we can't do a search */
-	gs = window.getSelection(); /* Get the user's selection */
-
+ 
+var url = "http://www.search.txcourts.gov/CaseSearch.aspx?coa=cossup", /* Initialize the URL to use if we cannot do a search */
+	gs = window.getSelection(); /* Get the selection */
+ 
 /* See if the user has actually selected anything */
 if(gs.type != "None") {
 	var caseNoContainer = gs.getRangeAt(0), /* Get the selected range */
-		sc = caseNoContainer.startContainer; /* Get the data container for the user's selection */
-	if(typeof(sc.data) != 'undefined') {
+		sc = caseNoContainer.startContainer; /* Get the data container for the selection */
+	if(typeof(sc.data) != "undefined") {
 		/* Get the raw selection */
 		var caseNo = sc.data.substr(caseNoContainer.startOffset, caseNoContainer.endOffset - caseNoContainer.startOffset);
 	
 		/* Replace en-dashes with hyphens and strip any leading or trailing characters */
-		caseNo = caseNo.replace(/\u2013/g, '-').replace(/^[^\d]+|[^CRV\d]+$/g, '');
+		caseNo = caseNo.replace(/\u2013/g, "-").replace(/^[^\d]+|[^CRV\d]+$/g, "");
 	
 		/* If the case is a -CR or -CV case, make sure the numeric parts are appropriately padded with leading zeroes */
 		if(caseNo.match(/C[RV]$/)) {
-			caseNoParts = caseNo.split('-');
+			caseNoParts = caseNo.split("-");
 			caseNoParts[0] = ("00"+caseNoParts[0]).slice(-2);
 			caseNoParts[1] = ("00"+caseNoParts[1]).slice(-2);
 			caseNoParts[2] = ("00000"+caseNoParts[2]).slice(-5);
-			caseNo = caseNoParts.join('-');
+			caseNo = caseNoParts.join("-");
 		}
 		
 		/* If the case number is non-empty, get the URL for the search page. */
-		if(caseNo != '') {
-			var url = 'http://www.search.txcourts.gov/Case.aspx?cn='+caseNo;
+		if(caseNo != "") {
+			var url = "http://www.search.txcourts.gov/Case.aspx?cn="+caseNo;
 		}
 	}
 }
