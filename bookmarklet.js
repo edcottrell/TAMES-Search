@@ -27,7 +27,8 @@ javascript:
 var url = 'http://www.search.txcourts.gov/CaseSearch.aspx?coa=cossup', /* Initialize the URL to use if we can't do a search */
 	gs = window.getSelection(); /* Get the user's selection */
 
-/* See if the user has actually selected anything */ if(gs.type != "None") {
+/* See if the user has actually selected anything */
+if(gs.type != "None") {
 	var caseNoContainer = gs.getRangeAt(0), /* Get the selected range */
 		sc = caseNoContainer.startContainer; /* Get the data container for the user's selection */
 	if(typeof(sc.data) != 'undefined') {
