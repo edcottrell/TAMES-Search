@@ -13,7 +13,7 @@ Features
 
 - Works with all Court of Appeals and Supreme Court of Texas cases. It doesn't work with the Court of Criminal Appeals, which uses a different website structure than the other courts.
 - Understands sloppy highlighting. For example, it's okay if you highlight `No. 01-02-00345-CV.`  The `No. ` and trailing `.` will be ignored.
-- Understands en-dashes and automatically replaces them with hyphens.
+- Understands en-dashes and automatically replaces them with hyphens. So, <code>01&ndash;02&ndash;00345&ndash;CV</code> becomes <code>01-02-00345-CV</code>.
 - Automatically fixes "incomplete" numbers.  For example, it automatically converts `1-2-345-CV` into `01-02-00345-CV`.
 - If you haven't selected anything or if what you have selected isn't a valid case number, it takes you to [the main TAMES search page](http://www.search.txcourts.gov/CaseSearch.aspx?coa=cossup).
  
