@@ -24,8 +24,6 @@ Here is the bookmarklet itself. To use it, create a bookmark in your browser and
 
     javascript:var d="http://www.search.txcourts.gov/",p="CaseSearch.aspx?coa=cossup",gs=window.getSelection();if(gs.type!="None"){var cnc=gs.getRangeAt(0),sc=cnc.startContainer;if(typeof sc.data!="undefined"){var cn=sc.data.substr(cnc.startOffset,cnc.endOffset-cnc.startOffset);cn=cn.replace(/\u2013/g,"-").replace(/^[^\d]+|[^CRV\d]+$/g,"");if(cn.match(/C[RV]$/)){s=cn.split("-");s[0]=("00"+s[0]).slice(-2);s[1]=("00"+s[1]).slice(-2);s[2]=("00000"+s[2]).slice(-5);cn=s.join("-")}if(cn!=""){var p="Case.aspx?cn="+cn}}}window.open(d+p)
 
-I have created [a blog post where you can drag and drop this directly into your bookmarks toolbar](http://www.edcottrell.com/2014/04/29/tames-search-bookmarklet/).
-
 See the next section for additional instructions.
 
 How to Use It
