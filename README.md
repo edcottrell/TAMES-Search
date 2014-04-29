@@ -30,3 +30,12 @@ How to Use It
 ------------
 
 For instructions on how to add it to your browser (at least for Internet Explorer, Chrome, Firefox, Safari, or Opera), please see the [instructions on this page](http://marklets.com/FAQ.aspx#howDoIAddABookmarkletToMyBrowser).
+
+A Couple of Notes
+------------
+
+Bookmarklets consist of JavaScript, so you must enable JavaScript in your browser. If you're able to use Westlaw, it's almost certainly already turned on.
+
+Using this tool may trigger your popup blocker the first time you use it on a site. If so, just tell the popup blocker to allow all popups on the site in question.
+
+**Problems? Feel free to [contact me](http://www.edcottrell.com/contact/).**
