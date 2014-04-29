@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="TAMES Search Bookmarklet : Bookmarklet for searching for Texas cases in the Courts of Appeals and Supreme Court" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>TAMES Search Bookmarklet</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/edcottrell/TAMES-Search">View on GitHub</a>
+
+          <h1 id="project_title">TAMES Search Bookmarklet</h1>
+          <h2 id="project_tagline">Bookmarklet for searching for Texas cases in the Courts of Appeals and Supreme Court</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/edcottrell/TAMES-Search/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/edcottrell/TAMES-Search/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="tames-search" class="anchor" href="#tames-search"><span class="octicon octicon-link"></span></a>TAMES Search</h1>
+
+<p>I have created a little bookmarklet for searching for Texas cases in the Courts of Appeals and Supreme Court. A bookmarklet, if you're not familiar with that term, is a "smart bookmark" that does some action when you use it. It's actually a little program, so you can do pretty handy things with bookmarklets.</p>
+
+<h2>
+<a name="how-this-bookmarklet-works" class="anchor" href="#how-this-bookmarklet-works"><span class="octicon octicon-link"></span></a>How this Bookmarklet Works</h2>
+
+<p>When you select a case number (e.g., <code>01-02-00345-CV</code>) and click on the bookmarklet, a new window will open with the TAMES case page for the case number in question. In my example, that would be <a href="http://www.search.txcourts.gov/Case.aspx?cn=01-02-00345-CV">this page</a>.  So, for example, you can highlight the case number in Westlaw, then click this bookmarklet, and it will open a new window with the Court of Appeals or Supreme Court page (as appropriate) for the case. This makes it easy to check petition/writ history, motions for rehearing, and the like.</p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Works with all Court of Appeals and Supreme Court of Texas cases. It doesn't work with the Court of Criminal Appeals, which uses a different website structure than the other courts.</li>
+<li>Understands sloppy highlighting. For example, it's okay if you highlight <code>No. 01-02-00345-CV.</code>  The <code>No.</code> and trailing <code>.</code> will be ignored.</li>
+<li>Understands en-dashes and automatically replaces them with hyphens. So, <code>01–02–00345–CV</code> becomes <code>01-02-00345-CV</code>.</li>
+<li>Automatically fixes "incomplete" numbers.  For example, it automatically converts <code>1-2-345-CV</code> into <code>01-02-00345-CV</code>.</li>
+<li>If you haven't selected anything or if what you have selected isn't a valid case number, it takes you to <a href="http://www.search.txcourts.gov/CaseSearch.aspx?coa=cossup">the main TAMES search page</a>.</li>
+</ul><h2>
+<a name="the-bookmarklet" class="anchor" href="#the-bookmarklet"><span class="octicon octicon-link"></span></a>The Bookmarklet</h2>
+
+<p>Here is the bookmarklet itself: <strong><a>TAMES Case Search</a></strong></p>
+
+<p>To use it, simply drag and drop it to your bookmarks toolbar. Alternatively, you can create a bookmark in your browser and use this as the URL (address):</p>
+
+<pre><code>javascript:function TAMESSearch(){var d="http://www.search.txcourts.gov/",p="CaseSearch.aspx?coa=cossup",gs=window.getSelection();if(gs.type!="None"){var cnc=gs.getRangeAt(0),sc=cnc.startContainer;if(typeof sc.data!="undefined"){var cn=sc.data.substr(cnc.startOffset,cnc.endOffset-cnc.startOffset);cn=cn.replace(/\u2013/g,"-").replace(/^[^\d]+|[^CRV\d]+$/g,"");if(cn.match(/C[RV]$/)){s=cn.split("-");s[0]=("00"+s[0]).slice(-2);s[1]=("00"+s[1]).slice(-2);s[2]=("00000"+s[2]).slice(-5);cn=s.join("-")}if(cn!=""){var p="Case.aspx?cn="+cn}}}window.open(d+p)}TAMESSearch()
+</code></pre>
+
+<p>See the next section for additional instructions.</p>
+
+<h2>
+<a name="how-to-use-it" class="anchor" href="#how-to-use-it"><span class="octicon octicon-link"></span></a>How to Use It</h2>
+
+<p>For instructions on how to add it to your browser (at least for Internet Explorer, Chrome, Firefox, Safari, or Opera), please see the <a href="http://marklets.com/FAQ.aspx#howDoIAddABookmarkletToMyBrowser">instructions on this page</a>.</p>
+
+<h2>
+<a name="a-couple-of-notes" class="anchor" href="#a-couple-of-notes"><span class="octicon octicon-link"></span></a>A Couple of Notes</h2>
+
+<p>Bookmarklets consist of JavaScript, so you must enable JavaScript in your browser. If you're able to use Westlaw, it's almost certainly already turned on.</p>
+
+<p>Using this tool may trigger your popup blocker the first time you use it on a site. If so, just tell the popup blocker to allow all popups on the site in question.</p>
+
+<p><strong>Problems? Feel free to <a href="http://www.edcottrell.com/contact/">contact me</a>.</strong></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">TAMES Search Bookmarklet maintained by <a href="https://github.com/edcottrell">edcottrell</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
