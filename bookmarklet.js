@@ -30,7 +30,7 @@ function TAMESSearch() {
 		gs = window.getSelection(); /* Get the selection */
 	 
 	/* See if the user has actually selected anything */
-	if(gs.type != "None") {
+	if(!gs.isCollapsed) {
 		var caseNoContainer = gs.getRangeAt(0), /* Get the selected range */
 			sc = caseNoContainer.startContainer; /* Get the data container for the selection */
 		if(typeof(sc.data) != "undefined") {
