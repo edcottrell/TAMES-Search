@@ -42,7 +42,7 @@ function TAMESSearch() {
 		
 			/* If the case is a -CR or -CV case, make sure the numeric parts are appropriately padded with leading zeroes */
 			if(caseNo.match(/C[RV]$/)) {
-				caseNoParts = caseNo.split("-");
+				var caseNoParts = caseNo.split("-");
 				caseNoParts[0] = ("00"+caseNoParts[0]).slice(-2);
 				caseNoParts[1] = ("00"+caseNoParts[1]).slice(-2);
 				caseNoParts[2] = ("00000"+caseNoParts[2]).slice(-5);
@@ -51,7 +51,7 @@ function TAMESSearch() {
 			
 			/* If the case number is non-empty, get the URL for the search page. */
 			if(caseNo != "") {
-				var path = "Case.aspx?cn="+caseNo;
+				path = "Case.aspx?cn="+caseNo;
 			}
 		}
 	}
